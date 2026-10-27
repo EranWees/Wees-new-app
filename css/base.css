@@ -1,0 +1,54 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+/* App column: phone-width, centred on desktop */
+.app {
+  max-width: 480px;
+  min-height: 100vh;
+  margin-inline: auto;
+  background: var(--surface);
+  padding-bottom: calc(var(--dock-space) + env(safe-area-inset-bottom)); /* last item always scrolls clear of the dock */
+}
+
+/* Hero image with a white sheet sliding over it */
+.hero {
+  height: 260px;
+  background: linear-gradient(160deg, var(--brand), color-mix(in srgb, var(--brand) 35%, #000));
+  background-size: cover;
+  background-position: center;
+}
+.sheet {
+  position: relative;
+  margin-top: -28px;
+  padding: 14px 24px 0;
+  background: var(--surface);
+  border-radius: var(--r-sheet) var(--r-sheet) 0 0;
+  text-align: center;
+}
+.handle { width: 36px; height: 3px; margin: 0 auto 22px; background: var(--line); border-radius: 2px; }
+
+.title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.05;
+  letter-spacing: .01em;
+}
+.subtle { color: var(--muted); font-size: 13px; }
+.section-title { font-weight: 600; font-size: 15px; margin: 28px 0 12px; text-align: left; }
+.stack { display: grid; gap: 12px; text-align: left; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

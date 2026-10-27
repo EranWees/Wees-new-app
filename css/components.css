@@ -1,0 +1,91 @@
+/* Buttons */
+.btn {
+  text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 11px 26px; border-radius: var(--r-pill);
+  border: 1px solid var(--line); background: transparent;
+  font-size: 13px; font-weight: 500; letter-spacing: .04em;
+  transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+.btn:hover { border-color: var(--brand); color: var(--brand); }
+.btn--solid { background: var(--brand); color: var(--on-brand); border-color: var(--brand); }
+.btn--solid:hover { background: var(--brand-strong); border-color: var(--brand-strong); color: var(--on-brand); }
+.btn--full { width: 100%; }
+
+/* Tier badge */
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px; padding: 5px 14px; border-radius: var(--r-pill);
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--gold); background: var(--gold-soft); border: 1px solid var(--gold-line);
+}
+
+/* Three-stat row */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 26px; }
+.stat__value { font-size: 24px; font-weight: 400; }
+.stat__label { margin-top: 2px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+
+/* Session folder card */
+.folder {
+  display: grid; gap: 14px; padding: 18px 20px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-card);
+}
+.folder__row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.folder__title { font-weight: 600; font-size: 15px; }
+.folder__meta { margin-top: 2px; font-size: 12px; color: var(--muted); }
+.folder__note { font-size: 12px; color: var(--muted); }
+
+.status { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 500; white-space: nowrap; }
+.status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
+.status--unpaid  { --dot: var(--st-unpaid); }
+.status--pending { --dot: var(--st-pending); }
+.status--paid    { --dot: var(--st-paid); }
+.status--ready   { --dot: var(--st-ready); }
+
+/* Live countdown */
+.countdown { display: flex; gap: 22px; }
+.countdown__unit { font-size: 22px; line-height: 1.1; }
+.countdown__unit small { display: block; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+
+/* Dock (Pinterest style): three separate floating tiles, each its own rounded button.
+   Colours come from tokens so a dark theme only has to override the --dock-* values. */
+.dock {
+  position: fixed; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 30;
+  display: flex; gap: 10px; padding: 0;
+  transform: translateX(-50%);
+}
+.dock__item {
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 18px;
+  color: var(--dock-icon); text-decoration: none; -webkit-tap-highlight-color: transparent;
+  background: var(--dock-bg); border: 1px solid var(--dock-line);
+  backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  box-shadow: var(--shadow-dock);
+  transition: transform .18s var(--ease), background .2s var(--ease);
+}
+.dock__item svg {
+  width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.9;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.dock__item:hover { background: var(--dock-bg-hover); }
+.dock__item:active { transform: scale(.92); }
+.dock__item[aria-current="page"] { color: var(--dock-icon-active); background: var(--dock-active-bg); border-color: var(--dock-active-bg); }
+.dock__item[aria-current="page"] svg { fill: currentColor; }                  /* active = filled icon */
+.dock__item[aria-current="page"] .cal-lines { stroke: var(--dock-active-bg); } /* calendar lines stay visible on the fill */
+
+/* Toast */
+.toast-host { position: fixed; left: 50%; top: 16px; transform: translateX(-50%); z-index: 50; display: grid; gap: 8px; }
+.toast {
+  padding: 11px 20px; border-radius: var(--r-pill);
+  background: var(--ink); color: #fff; font-size: 13px; box-shadow: var(--shadow-soft);
+  animation: toast-in .25s var(--ease);
+}
+@keyframes toast-in { from { opacity: 0; transform: translateY(-8px); } }
+
+/* Skeleton */
+.skeleton {
+  height: 78px; border-radius: var(--r-card);
+  background: linear-gradient(90deg, var(--bg) 25%, #f7fbfc 50%, var(--bg) 75%);
+  background-size: 200% 100%; animation: shimmer 1.4s linear infinite;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }

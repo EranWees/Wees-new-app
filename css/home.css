@@ -1,0 +1,107 @@
+/* ============================================================
+   Home: fading studio banner, quick actions, sessions
+   Phone is the base. Tablet and desktop overrides are at the bottom.
+   ============================================================ */
+
+.page { position: relative; }
+
+/* Hero: a studio photograph with a readable gradient. Never the client's photo. */
+.hero--home {
+  position: relative; isolation: isolate;
+  display: flex; flex-direction: column; justify-content: space-between;
+  height: 250px; margin: 0; padding: 18px var(--gutter) 22px; border-radius: 0;
+  color: #fff;
+  background: linear-gradient(140deg, var(--brand), #053b49);   /* shows while photos load */
+  overflow: hidden;
+}
+.hero__slides { position: absolute; inset: 0; z-index: -2; }
+.hero__slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%;
+  opacity: 0; transition: opacity 1.6s ease-in-out; }
+.hero__slide.is-on { opacity: 1; }
+.hero__cap { position: absolute; top: 22px; right: var(--gutter); display: grid; justify-items: end; gap: 8px; max-width: 46%; text-align: right; }
+.hero__cap-text { display: grid; gap: 1px; transition: opacity .35s ease; }
+.hero__cap-text.is-out { opacity: 0; }
+.hero__cap-text small { font-size: 10px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan-bright); }
+.hero__cap-text b { display: none; font-family: var(--font-serif); font-weight: 600; font-size: 18px; line-height: 1.15; }
+.hero__dots { display: flex; }
+.hero__dot { padding: 8px 3px; background: none; border: 0; }
+.hero__dot::before { content: ""; display: block; width: 6px; height: 6px; border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .45); transition: width .3s var(--ease), background .3s var(--ease); }
+.hero__dot[aria-current="true"]::before { width: 20px; background: #fff; }
+@media (prefers-reduced-motion: reduce) { .hero__slide { transition: none; } }
+.hero--home::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(6, 40, 52, .35) 0%, rgba(6, 40, 52, .05) 38%, rgba(6, 40, 52, .88) 100%);
+}
+.hero__brand { font-family: var(--font-serif); font-weight: 600; font-size: 20px; letter-spacing: .02em; }
+.hero__brand::before {
+  content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 9px;
+  border-radius: 50%; background: var(--cyan-bright); vertical-align: 2px;
+}
+.hero__inner { display: grid; justify-items: start; }
+.hero__eyebrow { font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--cyan-bright); }
+.hero__name { margin: 6px 0 8px; font-family: var(--font-serif); font-weight: 600; font-size: 32px; line-height: 1; }
+.hero__line { max-width: 36ch; font-size: 14px; color: rgba(255, 255, 255, .92); }
+.hero__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chip {
+  padding: 5px 13px; border-radius: var(--r-pill); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .3);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+
+/* Body. On phones everything is one column in this order: slider, quick actions, sessions, tier. */
+.home { display: flex; flex-direction: column; gap: 20px; padding: 22px var(--gutter) 44px; }
+.home__side { display: contents; }
+.qa-row { order: 2; }
+.home__sessions { order: 3; }
+.tiercard { order: 4; }
+.home__sessions .section-title { margin: 0 0 12px; }
+
+/* Quick actions */
+.qa-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.qa {
+  display: grid; justify-items: center; gap: 8px; padding: 14px 6px;
+  border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface);
+  color: var(--ink); font-size: 12px; font-weight: 600; text-align: center; text-decoration: none;
+  transition: border-color .2s var(--ease), background .2s var(--ease), transform .15s var(--ease);
+}
+.qa:hover { border-color: var(--brand-line); background: var(--brand-soft); }
+.qa:active { transform: scale(.97); }
+.qa svg { width: 22px; height: 22px; fill: none; stroke: var(--brand); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Tier */
+.tiercard { padding: 18px 20px 16px; background: var(--gold-soft); border: 1px solid var(--gold-line); border-radius: var(--r-card); }
+.tiercard__name { margin-bottom: 12px; font-family: var(--font-serif); font-weight: 600; font-size: 30px; line-height: 1; color: var(--gold); }
+.tiercard .progress { background: rgba(168, 124, 31, .18); }
+.tiercard .subtle { margin: 0; }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 700px) {
+  .hero--home { height: 300px; padding: 28px var(--gutter); border-radius: 0; }
+  .hero__name { font-size: 44px; }
+  .home { padding: 28px var(--gutter) 56px; }
+  .hero__cap { top: 28px; right: var(--gutter); max-width: 40%; }
+  .hero__cap-text b { display: block; }
+  .qa-row { gap: 12px; }
+}
+
+/* ---------- Desktop: sessions on the left, actions and tier on the right ---------- */
+@media (min-width: 1024px) {
+  .page { max-width: 1120px; margin-inline: auto; padding: 40px var(--gutter) 0; }
+  .hero--home { height: 340px; padding: 40px 48px; border-radius: 28px; }
+  .hero__brand { display: none; }
+  .hero__name { font-size: 56px; }
+  .hero__line { font-size: 15px; }
+
+  .hero__cap { top: 40px; right: 48px; }
+  .hero__cap-text b { font-size: 22px; }
+  .home {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 300px); grid-template-areas: "sessions side";
+    column-gap: 48px; row-gap: 24px; align-items: start; padding: 32px 0 72px;
+  }
+  .home__sessions { grid-area: sessions; order: 0; }
+  .home__side { display: grid; grid-area: side; gap: 16px; position: sticky; top: 24px; }
+  .qa-row { grid-template-columns: 1fr; gap: 8px; }
+  .qa { grid-auto-flow: column; justify-content: start; justify-items: start; align-items: center; gap: 14px; padding: 14px 18px; font-size: 14px; text-align: left; }
+  .tiercard { margin: 0; }
+}

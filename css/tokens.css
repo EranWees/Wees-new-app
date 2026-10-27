@@ -1,0 +1,49 @@
+/* Design tokens: change a value here and the whole app follows. */
+/* Brand: change --brand and the whole app follows (buttons, active states, dock, links, focus). */
+:root {
+  --brand: #0b6f84;                                              /* cyan, dark enough for white text (4.5:1) */
+  --cyan-bright: #22d3ee;                                       /* decorative highlights only */
+  --brand-strong: color-mix(in srgb, var(--brand) 80%, #000);   /* hover / pressed */
+  --brand-soft: color-mix(in srgb, var(--brand) 8%, var(--surface));      /* tinted panels */
+  --brand-line: color-mix(in srgb, var(--brand) 30%, #fff);     /* tinted borders */
+  --on-brand: #ffffff;
+
+  --bg: #f2ede4;
+  --surface: #fbf9f4;
+  --ink: #14181a;
+  --muted: #5f635f;
+  --faint: #98978f;
+  --line: #e1d9ca;
+
+  --gold: #a87c1f;
+  --gold-soft: #fbf4e1;
+  --gold-line: #ecd9a4;
+
+  /* Status colours: small accents only (dots, thin outlines). */
+  --st-unpaid: #9aa1ad;
+  --st-pending: #c4871a;
+  --st-paid: #3b7fb5;
+  --st-ready: #3c8a68;
+
+  --font-serif: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;  /* same family: one normal font everywhere */
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* Editorial display face: names, numbers, section titles. Body copy stays Inter. */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+
+  --r-sheet: 24px;
+  --r-card: 16px;
+  --r-pill: 999px;
+
+  --shadow-soft: 0 1px 2px rgba(40, 30, 10, .05), 0 12px 32px rgba(40, 30, 10, .08);
+  --accent: #c4533a;                                            /* terracotta, used sparingly */
+  --shadow-dock: 0 6px 20px rgba(12, 31, 43, .16);
+  --dock-space: 92px; /* tile height 52px + gap from the edge + breathing room */
+  /* Dock tiles: white glass, the active one takes the brand colour */
+  --dock-bg: rgba(20, 24, 26, .94);
+  --dock-bg-hover: #1d2326;
+  --dock-line: rgba(255, 255, 255, .08);
+  --dock-icon: rgba(255, 255, 255, .62);
+  --dock-active-bg: var(--surface);
+  --dock-icon-active: var(--ink);
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}

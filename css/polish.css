@@ -1,0 +1,62 @@
+/* ============================================================
+   Global polish: readability, touch targets, forms, focus.
+   Loaded last so it refines every screen without touching them.
+   ============================================================ */
+
+/* Readability */
+:root { --faint: #6f6d66; }                      /* was too pale for small labels (now 4.5:1 on cream) */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-size: 15px; line-height: 1.55; text-rendering: optimizeLegibility; font-feature-settings: "ss01", "kern"; }
+button, a { -webkit-tap-highlight-color: transparent; }
+h1, h2, .title { text-wrap: balance; }
+p, .subtle, .folder__note { text-wrap: pretty; }
+.subtle { line-height: 1.6; }
+
+/* Small print: nothing under 11px, and calmer letter-spacing on all-caps labels */
+.countdown__unit small, .hero__cap-text small, .folder__title::before, .tier__mark-min,
+.dock__brand span, .dock__label { font-size: 11px; }
+.eyebrow, .section-title { letter-spacing: .16em; }
+.btn { letter-spacing: .12em; }
+.field { letter-spacing: .1em; }
+.tabs button { letter-spacing: .12em; }
+
+/* Forms: 16px stops iOS zooming into fields; clearer states */
+.field input, .field select, .field textarea { font-size: 16px; min-height: 48px; }
+.field input::placeholder, .field textarea::placeholder { color: var(--faint); opacity: 1; }
+.field input:disabled, .field select:disabled, .field textarea:disabled { opacity: .55; }
+.form__error { font-size: 13px; line-height: 1.4; }
+.form__error:not([hidden]) { padding: 10px 14px; border-radius: 12px; background: #fbeae6; color: #8f2f1f; }
+
+/* Touch targets and feedback */
+.link { display: inline-flex; align-items: center; min-height: 44px; }
+.row-actions { gap: 4px 22px; }
+.btn { transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .12s var(--ease), opacity .2s var(--ease); }
+.btn:active:not(:disabled) { transform: scale(.98); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.menu-btn { min-width: 44px; min-height: 44px; }
+.tabs button { min-height: 48px; }
+.qa { min-height: 76px; }
+
+/* Small controls: give them a 44px reach without disturbing the visual rhythm */
+.hero__dots { margin-block: -8px; }
+.hero__dot { display: grid; place-items: center; min-width: 32px; min-height: 44px; padding: 0; }
+.tiercard__link { display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
+.bk-back { display: inline-flex; align-items: center; min-height: 44px; margin-block: -12px; }
+
+/* Focus visible on dark surfaces too */
+.dock :focus-visible, .bk-summary :focus-visible, .bk-bar :focus-visible, .tiercard :focus-visible { outline-color: #fff; }
+
+/* Touch screens have no hover: keep cards still instead of stuck in a lifted state */
+@media (hover: none) {
+  .folder:hover, .bk-type:hover { transform: none; box-shadow: none; }
+  .btn:hover:not(.btn--solid) { background: transparent; color: var(--ink); border-color: var(--ink); }
+}
+
+/* Screens never sit under the floating dock, and long words never break the layout */
+.screen { overflow-wrap: anywhere; }
+.screen > :last-child { margin-bottom: 8px; }
+
+/* Desktop profile card keeps a gutter on both sides instead of touching the screen edge */
+@media (min-width: 1024px) {
+  .profile-page { width: calc(100% - 2 * var(--gutter)); max-width: 1008px; margin: 40px auto 0; overflow: hidden; }
+}

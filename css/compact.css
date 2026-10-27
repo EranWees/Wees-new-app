@@ -1,0 +1,169 @@
+/* ============================================================
+   Compact + normal type. One everyday font (Inter), normal-case labels,
+   and smaller headings, buttons and cards so nothing feels oversized.
+   Loaded last. To go bigger or smaller, change the sizes in this file only.
+   ============================================================ */
+:root { --r-card: 12px; --r-sheet: 20px; --dock-space: 80px; }
+body { font-size: 14px; line-height: 1.5; font-feature-settings: normal; }
+
+/* ---------- Headings: plain, medium weight ---------- */
+.title, .screen .title, .profile-page .title, .hero__name, .tier__name, .tiercard__name, .modal__title,
+.folder__title, .pkg__name, .bk-type__name, .bk-group__name, .bk-session__top b, .bk-summary__title,
+.hero__brand, .dock__brand, .stat__value, .countdown__unit, .pay__amount, .bk-count output,
+.bk-total strong, .bk-bar strong, .viewer__title, .mag__title b, .hero__cap-text b {
+  font-family: var(--font-sans); font-style: normal; letter-spacing: -.01em;
+}
+.title em, .hero__name em { font-style: normal; font-weight: inherit; color: var(--brand); }
+.title, .screen .title { font-size: clamp(24px, 5vw, 30px); font-weight: 650; line-height: 1.15; }
+.screen .subtle { font-size: 14px; margin-top: 6px; max-width: 52ch; }
+.screen { padding: 28px var(--gutter) 0; }
+.screen--login { padding: 88px var(--gutter) 40px; max-width: 440px; margin-inline: auto; }
+
+/* ---------- Labels: normal case, no wide tracking ---------- */
+.eyebrow, .section-title, .tabs button, .btn, .badge, .chip, .status, .hero__eyebrow, .hero__cap-text small,
+.stat__label, .countdown__unit small, .field, .field legend, .bk-slots legend, .bk-back, .bk-head__n,
+.bk-count small, .bk-session__tag, .bk-type__go, .bk-total span, .qa, .folder__title::before {
+  text-transform: none; letter-spacing: 0;
+}
+.eyebrow { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.eyebrow::after { display: none; }
+.section-title { font-size: 14px; font-weight: 650; margin: 0 0 12px; }
+.section-title::after { display: none; }
+.field, .bk-slots legend { font-size: 12.5px; font-weight: 600; }
+.chip, .badge { font-size: 12px; font-weight: 600; }
+.stat__label, .countdown__unit small, .bk-count small { font-size: 12px; font-weight: 500; }
+.folder__title::before { content: none; }
+.tabs button { font-size: 13.5px; font-weight: 600; min-height: 44px; }
+.tabs { gap: 22px; }
+.qa { font-size: 13px; font-weight: 600; min-height: 64px; padding: 12px 8px; }
+
+/* ---------- Buttons and fields ---------- */
+.btn { min-height: 44px; padding: 0 22px; font-size: 14px; font-weight: 600; border-radius: 10px; }
+.btn--solid, .btn--full { border-radius: 10px; }
+.field input, .field select, .field textarea { min-height: 44px; padding: 10px 12px; border-radius: 10px; font-size: 16px; }
+.field textarea { min-height: 84px; }
+@media (min-width: 700px) { .field input, .field select, .field textarea { font-size: 14px; } }
+.form { gap: 12px; }
+.link { font-size: 13px; }
+.status { font-size: 12.5px; }
+
+/* ---------- Dock ---------- */
+.dock { bottom: calc(10px + env(safe-area-inset-bottom)); padding: 4px; gap: 4px; }
+.dock__item { width: 48px; height: 44px; }
+.dock__item svg { width: 20px; height: 20px; }
+@media (min-width: 1024px) {
+  :root { --side: 208px; }
+  .dock { padding: 28px 14px 20px; }
+  .dock__brand { font-size: 20px; font-weight: 700; padding: 0 10px 28px; }
+  .dock__brand span { font-size: 11px; letter-spacing: .12em; margin-top: 2px; font-weight: 600; }
+  .dock__item { width: auto; height: auto; justify-content: start; font-size: 14px; font-weight: 500; padding: 12px; }
+  .dock__item[aria-current="page"] { font-weight: 600; }
+}
+
+/* ---------- Home ---------- */
+.hero--home { height: 250px; padding: 18px var(--gutter) 22px; }
+.hero__brand { font-size: 16px; font-weight: 650; }
+.hero__name { font-size: 32px; font-weight: 650; margin: 6px 0 8px; }
+.hero__line { font-size: 14px; }
+.hero__eyebrow { font-size: 12px; }
+.hero__chips { margin-top: 12px; }
+.home { gap: 20px; padding: 22px var(--gutter) 44px; }
+.folder { padding: 14px 16px; gap: 10px; }
+.folder__title { font-size: 16px; font-weight: 650; }
+.folder__meta, .folder__note { font-size: 13px; }
+.countdown { gap: 18px; }
+.countdown__unit { font-size: 22px; font-weight: 650; }
+.tiercard__name, .tier__name { font-size: 22px; font-weight: 650; margin-bottom: 8px; }
+.stat__value { font-size: 22px; font-weight: 650; }
+.stats { margin-top: 18px; }
+.badge { margin-top: 8px; padding: 4px 12px; }
+
+/* ---------- Profile ---------- */
+.profile-page .hero--brand { height: 150px; }
+.profile-page .avatar { --av: 88px; font-size: 38px; }
+.profile-page .title { font-size: 30px; }
+.modal__title { font-size: 20px; font-weight: 650; }
+.pay__amount { font-size: 24px; font-weight: 650; }
+.pkg { padding: 12px 14px; }
+.pkg__name { font-size: 15px; font-weight: 650; }
+.pkg__price { font-size: 14px; font-weight: 650; }
+
+/* ---------- Booking ---------- */
+.bk-head { margin-bottom: 18px; }
+.bk-back, .bk-head__n { font-size: 12.5px; font-weight: 600; }
+.bk-types, .bk-groups { gap: 12px; margin-top: 20px; }
+.bk-type { min-height: 180px; padding: 18px; border-radius: 16px; }
+.bk-type__name { font-size: 26px; font-weight: 650; }
+.bk-type__blurb { font-size: 13px; }
+.bk-type__tag, .bk-type__go { font-size: 12px; font-weight: 600; }
+.bk-group__main { padding: 16px; }
+.bk-group__name { font-size: 19px; font-weight: 650; }
+.bk-group__note { font-size: 13px; }
+.bk-group__price { font-size: 18px; margin-top: 8px; }
+.bk-group__price small { font-size: 12px; }
+.bk-group__pick { padding: 12px 16px 14px; }
+.bk-chip { width: 44px; height: 44px; }
+.bk-card { padding: 18px 16px 16px; margin-top: 16px; border-radius: 16px; }
+.bk-step { width: 48px; height: 48px; font-size: 22px; }
+.bk-count output { font-size: 52px; font-weight: 650; }
+.bk-photos__calc { font-size: 14px; margin-top: 12px; }
+.bk-meter { margin-top: 16px; }
+.bk-meter__track { height: 8px; }
+.bk-meter__tick { height: 14px; top: -3px; }
+.bk-meter__labels span { font-size: 12px; }
+.bk-meter__msg { font-size: 13px; }
+.bk-main .section-title { margin-top: 26px; }
+.bk-session { padding: 12px 14px; }
+.bk-session__top b { font-size: 16px; font-weight: 650; }
+.bk-session__top span, .bk-session__perks { font-size: 12.5px; }
+.bk-session__tag { font-size: 11.5px; padding: 2px 9px; }
+.bk-opt { padding: 12px 14px; }
+.bk-opt__body b { font-size: 14px; }
+.bk-summary { padding: 18px 16px; border-radius: 16px; }
+.bk-summary__title { font-size: 18px; font-weight: 650; margin-bottom: 10px; }
+.bk-lines { font-size: 13px; gap: 8px; }
+.bk-total strong { font-size: 24px; font-weight: 650; }
+.bk-total span { font-size: 12.5px; }
+.bk-bar { padding: 8px 8px 8px 16px; border-radius: 14px; bottom: calc(74px + env(safe-area-inset-bottom)); }
+.bk-bar strong { font-size: 19px; font-weight: 650; }
+.bk-bar small { font-size: 12px; }
+.bk-pill span { min-height: 44px; font-size: 13.5px; }
+.bk-sent__tick { width: 44px; height: 44px; }
+@media (min-width: 700px) {
+  .screen { padding: 36px var(--gutter) 0; }
+  .screen--login { padding: 96px 32px 48px; }
+  .hero--home { height: 300px; padding: 28px var(--gutter); }
+  .hero__name { font-size: 44px; }
+  .hero__line { font-size: 15px; }
+  .hero__cap { top: 28px; right: var(--gutter); }
+  .home { gap: 24px; padding: 28px var(--gutter) 56px; }
+  .profile-page .hero--brand { height: 200px; }
+  .profile-page .avatar { --av: 104px; font-size: 44px; }
+  .profile-page .title { font-size: 40px; }
+  .bk-type { min-height: 280px; }
+  .bk-type__name { font-size: 30px; }
+  .bk-bar { bottom: calc(74px + env(safe-area-inset-bottom)); }
+}
+@media (min-width: 1024px) {
+  .screen { padding: 40px var(--gutter) 0; }
+  .screen--login { padding: 96px 32px 48px; }
+  .hero--home { height: 340px; padding: 40px 48px; border-radius: 28px; justify-content: flex-end; }
+  .hero__name { font-size: 56px; }
+  .hero__line { font-size: 15px; }
+  .hero__cap { top: 40px; right: 48px; }
+  .hero__eyebrow::after { display: none; }
+  .home { padding: 32px 0 72px; column-gap: 48px; row-gap: 24px; }
+  .profile-page .hero--brand { height: 230px; }
+  .profile-page .avatar { --av: 128px; font-size: 54px; }
+  .profile-page .title { font-size: 48px; }
+  .bk-type { min-height: 320px; }
+  .bk-grid { column-gap: 36px; }
+}
+
+/* Laptop widths: keep the profile header from squeezing the name against the stats */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .profile__bio { grid-template-columns: auto minmax(0, 1fr) minmax(200px, 240px); column-gap: 24px; }
+  .profile-page .avatar { --av: 104px; font-size: 46px; }
+  .profile-page .title { font-size: 40px; }
+  .profile-page .stats > div { padding: 4px 0; }
+}

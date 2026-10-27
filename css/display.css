@@ -1,0 +1,43 @@
+/* ============================================================
+   Display type: one editorial serif across the whole app.
+   Home, booking, profile, magazine and the lightbox all share it,
+   so a name or a number looks the same wherever it appears.
+   Body copy, labels, buttons and forms stay in Inter.
+   Loaded last so it wins over the compact type rules.
+   ============================================================ */
+
+.title,
+.screen .title,
+.profile-page .title,
+.hero__name,
+.hero__cap-text b,
+.tier__name,
+.tiercard__name,
+.modal__title,
+.avatar,
+.folder__title,
+.pkg__name,
+.hero__brand,
+.dock__brand,
+.stat__value,
+.countdown__unit,
+.pay__amount,
+.bk-total strong,
+.bk-bar strong,
+.viewer__title,
+.mag__title b {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -.01em;
+}
+
+/* The serif has no bold cut: keep the size, calm the weight. */
+.dock__brand { letter-spacing: 0; }
+
+/* Italic emphasis reads properly in the display face. */
+.title em,
+.profile-page .title em {
+  font-style: italic;
+  color: var(--brand);
+}
